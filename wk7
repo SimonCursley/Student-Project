@@ -1,0 +1,162 @@
+#include <stdio.h>
+
+#define MAX_NO_OF_STUDENTS 5
+
+int main() {
+	
+	// variables
+	char choice;
+	int studentMarks[MAX_NO_OF_STUDENTS]
+		 = { 50, 55, 67, 78, 88 };
+	char studentNames[MAX_NO_OF_STUDENTS][256]
+		 = { 
+		 	"john doe", "first doe", 
+			"asd asd", "asdasd asf a", 
+			"kagsfk agsdg" 
+			};
+	char studentDOBs[MAX_NO_OF_STUDENTS][64]
+		 = {
+		 	"23/05/1999", "24/12/1564",
+		 	"22/05/1989", "21/10/1594",
+		 	"20/09/1899"
+			};
+	int i;
+	
+	do {
+	
+		// inform user of program's purpose
+		printf("\n\n\n");
+		printf("Welcome to the Student Management System!\n");
+		printf("This program is designed to manage\n");
+		printf("a select number of students by\n");
+		printf("keeping track of the following:\n");
+		printf("names, marks, addresses, DOBs, etc.");
+		
+		// display the menu
+		printf("\n\nMenu:\n");
+		printf("a. Display Student Marks\n");
+		printf("e. Display Student Names\n");
+		printf("c. Display Student DOBs\n");
+		printf("\n");
+		printf("d. Read in Student Marks\n");
+		printf("b. Read in Student Names\n");
+		printf("f. Read in Student DOBs\n");
+		printf("g. Student Names & Marks\n");
+		printf("x. Exit\n\n");
+		
+		// ask the user for their choice
+		printf("Please choose an option from above: ");
+		scanf(" %c", &choice);
+		
+		// act on the user's choice
+		switch (choice) {
+			case 'a':
+				// code
+				printf("\nYou've chosen to display\n");
+				printf("the Student Marks. Here they are:\n");
+				
+				// display student marks
+				for ( i = 0; i < MAX_NO_OF_STUDENTS; i++ ) {
+					
+					printf("Student No. <%d>'s Mark: ", i + 1);
+					printf("%d\n", studentMarks[i]);
+					
+				}
+				
+				break;
+			case 'b':
+				// code
+				printf("\nYou've chosen to Read in Student Names.\n");
+				
+				for (i = 0; i < MAX_NO_OF_STUDENTS; i++) {
+					printf("Student <%d>'s Name: ", (i + 1));
+					scanf("\n%256[^\n]", &studentNames[i]);
+				}
+				
+				break;
+			case 'c':
+				// code
+				printf("\nYou've chosen to Display Student DOBs.\n");
+				
+				for (i = 0; i < MAX_NO_OF_STUDENTS; i++) {
+					printf("Student <%d>'s DOB: %s\n", (i + 1), studentDOBs[i]);
+				}
+				
+				break;
+			case 'd':
+				// code
+				printf("\nYou've chosen to give me the\n");
+				printf("Student Marks. Please follow the\n");
+				printf("instructions below.\n");
+				
+				// read in student marks
+				for ( i = 0; i < MAX_NO_OF_STUDENTS; i++ ) {
+					
+					printf("Student No. <%d>'s Mark: ", i + 1);
+					scanf("%d", &studentMarks[i]);
+					
+				}
+				
+				break;
+			case 'e':
+				// code
+				printf("\nYou've chosen to Display Student Names.\n");
+				
+				for (i = 0; i < MAX_NO_OF_STUDENTS; i++) {
+					printf(
+						"Student <%d>'s Name: %s\n", 
+						(i + 1),
+						studentNames[i]
+					);
+				}
+				
+				break;
+			case 'f':
+				// code
+				printf("\nYou've chosen to Read in Student DOBs.\n");
+				
+				for (i = 0; i < MAX_NO_OF_STUDENTS; i++) {
+					printf("Student <%d>'s DOB: ", (i + 1));
+					scanf("\n%[^\n]s", &studentDOBs[i]);
+				}
+				
+				break;
+			
+			case 'G':
+				// if G is entered, the next case's
+				// code will be run, because this case
+				// has no BREAK to stop that from
+				// happening
+			case 'g':
+				// code
+				
+				printf("\nYou've chosen to Display Student Names & Marks.\n");
+				
+				for (i = 0; i < MAX_NO_OF_STUDENTS; i++) {
+					printf(
+						"Student Name: <%s> | ", 
+						studentNames[i]
+					);
+					printf(
+						"Mark: <%d>\n", 
+						studentMarks[i]
+					);
+				}
+				
+				break;
+			
+			case 'x':
+				// code
+				printf("\nYou've chosen 'x'.\n");
+				break;
+			default:
+				// code
+				printf("\nI don't understand your ");
+				printf("choice. Please try again!\n");
+				break;
+		}
+		
+	} while ( choice != 'x' );
+	
+	return 0;
+}
